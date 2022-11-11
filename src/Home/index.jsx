@@ -32,7 +32,7 @@ function TweetForm({ loggedInUser, onSuccess }) {
 	}
 
 	return (
-		<div className="border-b border-silver">
+		<div className="border-b border-silver ">
 			<div className="flex space-x-2  p-4 ">
 				<img className="w-7" src="../img/user_icon.png" />
 				<h1 className="font-bold text-lg">Deixe sua mensagem:</h1>
@@ -50,7 +50,7 @@ function TweetForm({ loggedInUser, onSuccess }) {
 					disabled={formik.isSubmitting}
 				></textarea>
 
-				<div className="space-x-2 text-sm flex items-center px-2 py-2 justify-end">
+				<div className="space-x-2 text-sm flex items-center px-2 py-2 justify-start">
 					<span>
 						<span>{formik.values.text.length}</span> /{" "}
 						<span className="text-birdBlue">{MAX_TWEET_CHAR}</span>
@@ -60,7 +60,7 @@ function TweetForm({ loggedInUser, onSuccess }) {
 						disabled={
 							formik.values.text.length > MAX_TWEET_CHAR || formik.isSubmitting
 						}
-						className="bg-birdBlue px-3 font-bold disabled:opacity-50 py-1 rounded-full"
+						className="bg-newPurple px-3 font-bold disabled:opacity-50 py-1 rounded-full"
 					>
 						Postar
 					</button>
@@ -91,6 +91,7 @@ function Tweet({ name, username, avatar, children }) {
 
 export function Home({ loggedInUser }) {
 	const [data, setData] = useState([]);
+	localStorage.setItem('token', loggedInUser.accessToken)
 
 	async function getData() {
 		const res = await axios.get(`${import.meta.env.VITE_API_HOST}/tweets`, {
@@ -115,7 +116,7 @@ export function Home({ loggedInUser }) {
 							key={tweet.id}
 							name={tweet.user.name}
 							username={tweet.user.username}
-							avatar="../img/user_icon.png"
+							avatar="./icon.png"
 						>
 							{tweet.text}
 						</Tweet>

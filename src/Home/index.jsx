@@ -35,7 +35,7 @@ function TweetForm({ loggedInUser, onSuccess }) {
 		<div className="border-b border-silver">
 			<div className="flex space-x-2  p-4 ">
 				<img className="w-7" src="../img/user_icon.png" />
-				<h1 className="font-bold text-lg">Página Inicial</h1>
+				<h1 className="font-bold text-lg">Deixe sua mensagem:</h1>
 			</div>
 
 			<form className="pl-18 flex flex-col" onSubmit={formik.handleSubmit}>
@@ -46,7 +46,7 @@ function TweetForm({ loggedInUser, onSuccess }) {
 					onChange={formik.handleChange}
 					onBlur={formik.handleBlur}
 					className="bg-transparent outline-none px-14"
-					placeholder="O que está acontecendo?"
+					placeholder="Escreva sua mensagem"
 					disabled={formik.isSubmitting}
 				></textarea>
 
@@ -62,7 +62,7 @@ function TweetForm({ loggedInUser, onSuccess }) {
 						}
 						className="bg-birdBlue px-3 font-bold disabled:opacity-50 py-1 rounded-full"
 					>
-						Tweet
+						Postar
 					</button>
 				</div>
 			</form>

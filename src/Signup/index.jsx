@@ -100,14 +100,14 @@ export function Signup({ signInUser }) {
 				<button
 					type="Submit"
 					disabled={formik.isSubmitting || !formik.isValid}
-					className="bg-birdBlue font-bold py-3 text-lg disabled:opacity-50 rounded-full w-full"
+					className="bg-newPurple font-bold py-3 text-lg disabled:opacity-50 rounded-full w-full"
 				>
 					{formik.isSubmitting ? "Enviando..." : "Cadastrar"}
 				</button>
 			</form>
-			<span className="text-sm text-platinum opacity-50">
+			<span className="text-sm text-platinum opacity-70">
 				Já tem uma conta?{" "}
-				<a className="text-birdBlue" href="/login">
+				<a className="text-newPurple" href="/login">
 					Acesse.
 				</a>
 			</span>

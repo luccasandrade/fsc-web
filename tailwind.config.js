@@ -3,7 +3,8 @@ const brandColors = {
   onix: '#333639',
   silver: '#71767B',
   platinum: '#E7E9EA',
-  birdBlue: '#1D9BF0'
+  birdBlue: '#1D9BF0',
+  newPurple: '#9948f3'
 }
 
 module.exports = {

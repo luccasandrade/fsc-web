@@ -18,10 +18,10 @@ body {
 	position: fixed;
 	bottom: 0;
 	right: 0;
+	transition: 1s all ease-in-out;
+	overflow: hidden;
 }
 
-@media (max-width: 500px) {
-	.card{
-
-	}
+.minimize{
+	bottom: -240px
 }

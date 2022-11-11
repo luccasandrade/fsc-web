@@ -38,7 +38,7 @@ function TweetForm({ loggedInUser, onSuccess }) {
 	return (
 		<div className="border-b border-silver ">
 			<div className="flex space-x-2  p-4 ">
-				<img className="w-7" src="../img/user_icon.png" />
+				<img className="w-7" src={img0} />
 				<h1 className="font-bold text-lg">Deixe sua mensagem:</h1>
 			</div>
 
@@ -64,7 +64,7 @@ function TweetForm({ loggedInUser, onSuccess }) {
 						disabled={
 							formik.values.text.length > MAX_TWEET_CHAR || formik.isSubmitting
 						}
-						className="bg-newPurple px-3 font-bold disabled:opacity-50 py-1 rounded-full"
+						className="bg-newPurple px-3 font-bold disabled:opacity-50 py-1 px-2 rounded-full"
 					>
 						Postar
 					</button>
@@ -88,7 +88,7 @@ function Tweet({ name, username, children }) {
 				<p>{children}</p>
 				<div className="flex space-x-1 items-center text-silver">
 					<HeartIcon className="w-6 stroke-1"></HeartIcon>
-					<span>1.2k</span>
+					<span>{Math.floor(Math.random() * 20)}</span>
 				</div>
 			</div>
 		</div>
@@ -97,8 +97,6 @@ function Tweet({ name, username, children }) {
 
 export function Home({ loggedInUser }) {
 	const [data, setData] = useState([]);
-	localStorage.setItem('token', loggedInUser.accessToken)
-
 	async function getData() {
 		const res = await axios.get(`${import.meta.env.VITE_API_HOST}/tweets`, {
 			headers: {
@@ -114,18 +112,21 @@ export function Home({ loggedInUser }) {
 
 	return (
 		<>
-			<TweetForm loggedInUser={loggedInUser} onSuccess={getData} />
-			<div>
-				{data.length &&
-					data.map((tweet) => (
-						<Tweet
-							key={tweet.id}
-							name={tweet.user.name}
-							username={tweet.user.username}
-						>
-							{tweet.text}
-						</Tweet>
-					))}
+			<div className="w-[600px] max-w-[90%]">
+				<h1 className="text-2xl text-platinum m-4 font-bold">{`Bem vindo, ${loggedInUser.name.split(' ')[0]}!`}</h1>
+				<TweetForm loggedInUser={loggedInUser} onSuccess={getData} />
+				<div>
+					{data.length &&
+						data.map((tweet) => (
+							<Tweet
+								key={tweet.id}
+								name={tweet.user.name}
+								username={tweet.user.username}
+							>
+								{tweet.text}
+							</Tweet>
+						))}
+				</div>
 			</div>
 		</>
 	);

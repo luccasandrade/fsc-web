@@ -9,6 +9,18 @@ body,
 }
 
 body {
-	background: theme("colors.backgroundColor");
+	background: linear-gradient(to right, #20002c, #cbb4d4);
 	color: theme("colors.textColor");
+}
+
+.card{
+	background: linear-gradient(90deg, #20002c81, #cbb4d47e);
+}
+
+@media (max-width: 500px) {
+	.card{
+		position: fixed;
+		bottom: 0;
+		right: 0;
+	}
 }

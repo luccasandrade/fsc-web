@@ -4,7 +4,8 @@ const brandColors = {
   silver: '#71767B',
   platinum: '#E7E9EA',
   birdBlue: '#1D9BF0',
-  newPurple: '#9948f3'
+  newPurple: '#9948f3',
+  cardColor: '#333639'
 }
 
 module.exports = {

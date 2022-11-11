@@ -73,7 +73,7 @@ function TweetForm({ loggedInUser, onSuccess }) {
 		</div>
 	);
 }
-function Tweet({ name, username, avatar, children }) {
+function Tweet({ name, username, children }) {
 	const randNumber = Math.floor(Math.random() * 3)
 	const avatares = [img0, img1, img2, img3]
 	return (
@@ -122,7 +122,6 @@ export function Home({ loggedInUser }) {
 							key={tweet.id}
 							name={tweet.user.name}
 							username={tweet.user.username}
-							avatar= {avatares[randNumber]}
 						>
 							{tweet.text}
 						</Tweet>

@@ -79,7 +79,7 @@ function Tweet({ name, username, children }) {
 	return (
 		<div className="flex space-x-3 p-4 border-b border-silver">
 			<div>
-				<img src={avatares[randNumber]} />
+				<img className="w-10" src={avatares[randNumber]} />
 			</div>
 
 			<div className="text-sm">

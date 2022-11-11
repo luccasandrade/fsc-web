@@ -119,7 +119,10 @@ export function Home({ loggedInUser }) {
 		<>
 			<div className="flex flex-col items-center">
 			<div className="w-[600px] max-w-[90%] border-r border-silver shadow-xl">
-				<h1 className="text-2xl text-platinum m-4 font-bold">{`Bem vindo, ${loggedInUser.name.split(' ')[0]}!`}</h1>
+				<div className="flex flex-row justify-between items-center w-full">
+					<h1 className="text-2xl text-platinum m-4 font-bold">{`Bem vindo, ${loggedInUser.name.split(' ')[0]}!`}</h1>
+					<button onClick={() => {localStorage.removeItem('user');location.reload()}} className="bg-red-800 px-3 text-sm mr-4 font-bold py-1 px-2 rounded-full">Sair</button>
+				</div>
 				<TweetForm loggedInUser={loggedInUser} onSuccess={getData} />
 				<div>
 					{data.length &&

@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 import { useFormik } from "formik";
-import avatar from './img/icon.png'
+import avatar from '../img/icon.png'
 
 const MAX_TWEET_CHAR = 250;
 

@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 import { useFormik } from "formik";
+import avatar from './img/icon.png'
 
 const MAX_TWEET_CHAR = 250;
 
@@ -116,7 +117,7 @@ export function Home({ loggedInUser }) {
 							key={tweet.id}
 							name={tweet.user.name}
 							username={tweet.user.username}
-							avatar="./icon.png"
+							avatar= {avatar}
 						>
 							{tweet.text}
 						</Tweet>

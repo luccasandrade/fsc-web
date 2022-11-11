@@ -9,7 +9,6 @@ export function App() {
 	useEffect(() => {
 		const userStorage = localStorage.getItem('user')
 		if (userStorage !== 'undefined'){
-			console.log(userStorage)
 			setUser(JSON.parse(userStorage))
 		}
 	}, [])

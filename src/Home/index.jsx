@@ -3,7 +3,10 @@ import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 import { useFormik } from "formik";
-import avatar from '../img/icon.png'
+import img0 from '../img/icon0.png'
+import img1 from '../img/icon1.png'
+import img2 from '../img/icon2.png'
+import img3 from '../img/icon3.png'
 
 const MAX_TWEET_CHAR = 250;
 
@@ -71,10 +74,12 @@ function TweetForm({ loggedInUser, onSuccess }) {
 	);
 }
 function Tweet({ name, username, avatar, children }) {
+	const randNumber = Math.floor(Math.random() * 3)
+	const avatares = [img0, img1, img2, img3]
 	return (
 		<div className="flex space-x-3 p-4 border-b border-silver">
 			<div>
-				<img src={avatar} />
+				<img src={avatares[randNumber]} />
 			</div>
 
 			<div className="text-sm">
@@ -117,7 +122,7 @@ export function Home({ loggedInUser }) {
 							key={tweet.id}
 							name={tweet.user.name}
 							username={tweet.user.username}
-							avatar= {avatar}
+							avatar= {avatares[randNumber]}
 						>
 							{tweet.text}
 						</Tweet>

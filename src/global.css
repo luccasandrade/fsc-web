@@ -15,12 +15,13 @@ body {
 
 .card{
 	background: linear-gradient(90deg, #20002c81, #cbb4d47e);
+	position: fixed;
+	bottom: 0;
+	right: 0;
 }
 
 @media (max-width: 500px) {
 	.card{
-		position: fixed;
-		bottom: 0;
-		right: 0;
+
 	}
 }

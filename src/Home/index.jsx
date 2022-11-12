@@ -118,7 +118,7 @@ export function Home({ loggedInUser }) {
 	const myPosts = () => {
 		let myUser = localStorage.getItem('user')
 		myUser = myUser? JSON.parse(myUser): null
-		const postsFiltrados = res.data.reverse().filter(post => post.user.id === myUser.id)
+		const postsFiltrados = data.filter(post => post.user.id === myUser.id)
 		setData(postsFiltrados)
 	}
 

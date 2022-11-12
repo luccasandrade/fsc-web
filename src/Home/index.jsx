@@ -38,18 +38,14 @@ function TweetForm({ loggedInUser, onSuccess }) {
 
 	return (
 		<div className="border-b border-silver ">
-			<div className="flex space-x-2  p-4 ">
-					<h1 className="font-bold text-lg">Deixe sua mensagem:</h1>
-			</div>
-
-			<form className="pl-18 flex flex-col" onSubmit={formik.handleSubmit}>
+			<form className="pl-18 mt-6 flex flex-col" onSubmit={formik.handleSubmit}>
 				<textarea
 					type="text"
 					name="text"
 					value={formik.values.text}
 					onChange={formik.handleChange}
 					onBlur={formik.handleBlur}
-					className="bg-transparent outline-none px-14"
+					className="bg-transparent text-center outline-none px-14"
 					placeholder="Escreva sua mensagem"
 					disabled={formik.isSubmitting}
 				></textarea>
@@ -77,12 +73,12 @@ function Tweet({ name, username, children }) {
 	const randNumber = Math.floor(Math.random() * 3)
 	const avatares = [img0, img1, img2, img3]
 	return (
-		<div className="flex space-x-3 p-4 border-b border-silver">
+		<div className="flex space-x-3 justify-between pt-4 pb-4 border-b border-silver">
 			<div>
 				<img className="w-10" src={avatares[randNumber]} />
 			</div>
 
-			<div className="text-sm">
+			<div className="text-sm w-[100%]">
 				<span className="font-bold">{name}</span>{" "}
 				<span className="text-silver">@{username}</span>
 				<p>{children}</p>
@@ -118,15 +114,15 @@ export function Home({ loggedInUser }) {
 	return (
 		<>
 			<div className="flex flex-col items-center">
-			<div className="w-[600px] max-w-[90%] border-r border-silver shadow-xl">
+			<div className="w-[600px] max-w-[90%] border-silver shadow-xl">
 				<div className="flex flex-row justify-between items-center w-full">
-					<h1 className="text-2xl text-platinum m-4 font-bold">{`Bem vindo, ${loggedInUser.name.split(' ')[0]}!`}</h1>
-					<button onClick={() => {localStorage.removeItem('user');location.reload()}} className="bg-red-800 px-3 text-sm mr-4 font-bold py-1 px-2 rounded-full">Sair</button>
+					<h1 className="text-2xl text-platinum m-4 font-bold">{`Bem vindo(a), ${loggedInUser.name.split(' ')[0]}!`}</h1>
+					<button onClick={() => {localStorage.removeItem('user');location.reload()}} className="bg-red-800  text-sm absolute bottom-2 left-2 font-bold px-3 py-1 px-2 rounded-full">Sair</button>
 				</div>
 				<TweetForm loggedInUser={loggedInUser} onSuccess={getData} />
 				<div>
-					{data.length &&
-						data.map((tweet) => (
+					{
+						data.reverse().map((tweet) => (
 							<Tweet
 								key={tweet.id}
 								name={tweet.user.name}

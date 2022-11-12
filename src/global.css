@@ -9,7 +9,7 @@ body,
 }
 
 body {
-	background: linear-gradient(to right, #20002c, #cbb4d4);
+	background: #0f0c29;
 	color: theme("colors.textColor");
 }
 

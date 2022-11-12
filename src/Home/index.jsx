@@ -117,7 +117,7 @@ export function Home({ loggedInUser }) {
 			<div className="w-[600px] max-w-[90%] border-silver shadow-xl">
 				<div className="flex flex-row justify-between items-center w-full">
 					<h1 className="text-2xl text-platinum m-4 font-bold">{`Bem vindo(a), ${loggedInUser.name.split(' ')[0]}!`}</h1>
-					<button onClick={() => {localStorage.removeItem('user');location.reload()}} className="bg-red-800  text-sm absolute bottom-2 left-2 font-bold px-3 py-1 px-2 rounded-full">Sair</button>
+					<button onClick={() => {localStorage.removeItem('user');location.reload()}} className="bg-red-800  text-sm fixed bottom-2 left-2 font-bold px-3 py-1 px-2 rounded-full">Sair</button>
 				</div>
 				<TweetForm loggedInUser={loggedInUser} onSuccess={getData} />
 				<div>

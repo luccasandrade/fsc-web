@@ -113,7 +113,7 @@ export function Home({ loggedInUser }) {
 	}
 
 	const allPosts = () => {
-		setData(res.data.reverse())
+		getData()
 	}
 	const myPosts = () => {
 		let myUser = localStorage.getItem('user')

@@ -132,7 +132,7 @@ export function Home({ loggedInUser }) {
 				</div>
 				<TweetForm loggedInUser={loggedInUser} onSuccess={getData} />
 				<div className="navBar flex flex-row mt-2 mb-4 pb-2 justify-around">
-					<span className="m-2 p-1 px-2 rounded-full border-2 border-gray-600" onClick={allPosts}>Todos as postagens</span>
+					<span className="m-2 p-1 px-2 rounded-full border-2 border-gray-600" onClick={allPosts}>Todas as postagens</span>
 					<span className="m-2 p-1 px-2 rounded-full border-2 border-gray-600" onClick={myPosts}>Minhas postagens</span>
 				</div>
 				<div>

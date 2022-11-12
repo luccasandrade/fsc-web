@@ -112,6 +112,16 @@ export function Home({ loggedInUser }) {
 		card.classList.contains('minimize')? card.classList.remove('minimize'): card.classList.add('minimize')
 	}
 
+	const allPosts = () => {
+		setData(res.data.reverse())
+	}
+	const myPosts = () => {
+		let myUser = localStorage.getItem('user')
+		myUser = myUser? JSON.parse(myUser): null
+		const postsFiltrados = res.data.reverse().filter(post => post.user.id === myUser.id)
+		setData(postsFiltrados)
+	}
+
 	return (
 		<>
 			<div className="flex flex-col items-center">
@@ -121,6 +131,10 @@ export function Home({ loggedInUser }) {
 					<button onClick={() => {localStorage.removeItem('user');location.reload()}} className="bg-red-800  text-sm fixed bottom-2 left-2 font-bold px-3 py-1 px-2 rounded-full">Sair</button>
 				</div>
 				<TweetForm loggedInUser={loggedInUser} onSuccess={getData} />
+				<div className="navBar flex flex-row mt-2 mb-4 pb-2 justify-around">
+					<span className="m-2 p-1 px-2 rounded-full border-2 border-gray-600" onClick={allPosts}>Todos as postagens</span>
+					<span className="m-2 p-1 px-2 rounded-full border-2 border-gray-600" onClick={myPosts}>Minhas postagens</span>
+				</div>
 				<div>
 					{
 						data.map((tweet) => (

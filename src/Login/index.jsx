@@ -39,7 +39,7 @@ export function Login({ signInUser }) {
 					type="text"
 					name="email"
 					placeholder="E-mail"
-					value={formik.values.email}
+					value={formik.values.email.toLowerCase()}
 					onChange={formik.handleChange}
 					onBlur={formik.handleBlur}
 					disabled={formik.isSubmitting}

@@ -47,6 +47,7 @@ function TweetForm({ loggedInUser, onSuccess }) {
 					onBlur={formik.handleBlur}
 					className="bg-transparent text-center outline-none px-14"
 					placeholder="Escreva sua mensagem"
+					required
 					disabled={formik.isSubmitting}
 				></textarea>
 

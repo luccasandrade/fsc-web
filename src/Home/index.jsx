@@ -45,7 +45,7 @@ function TweetForm({ loggedInUser, onSuccess }) {
 					value={formik.values.text}
 					onChange={formik.handleChange}
 					onBlur={formik.handleBlur}
-					className="bg-transparent text-center outline-none px-14"
+					className="bg-transparent outline-none px-5"
 					placeholder="Escreva sua mensagem"
 					required
 					disabled={formik.isSubmitting}
@@ -100,7 +100,7 @@ export function Home({ loggedInUser }) {
 				"authorization": `Bearer ${loggedInUser.accessToken}`,
 			},
 		});
-		setData(res.data);
+		setData(res.data.reverse());
 	}
 
 	useEffect(() => {
@@ -123,7 +123,7 @@ export function Home({ loggedInUser }) {
 				<TweetForm loggedInUser={loggedInUser} onSuccess={getData} />
 				<div>
 					{
-						data.reverse().map((tweet) => (
+						data.map((tweet) => (
 							<Tweet
 								key={tweet.id}
 								name={tweet.user.name}

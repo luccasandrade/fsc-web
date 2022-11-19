@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+:root{
+	--detail: rgba(50,0,138,0.6);
+	--background: white;
+	--shadow: rgb(50,0,138);
+
+}
+
 html,
 body,
 #root {
@@ -9,8 +16,7 @@ body,
 }
 
 body {
-	background: #0f0c29;
-	color: theme("colors.textColor");
+	background: var(--background);
 }
 
 .card{

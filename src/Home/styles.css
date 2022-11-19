@@ -1,0 +1,46 @@
+.homepage{
+    background-color: var(--background);
+}
+.logo{
+    width: 50px;
+    margin: 2rem;
+}
+
+.logo-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+
+.textarea-post{
+    border-radius: 50px;
+    height: 80px;
+    padding: 1rem 1.5rem;
+}
+.form-post{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-box{
+    border-bottom: 1px solid gray;
+    background-color: var(--detail);
+    width: 100%;
+    padding: 2rem;
+
+}
+
+.btn-post{
+    background-color: var(--background);
+    color: var(--shadow);
+    padding: 0.2rem 0.5rem;
+    margin-top: 1rem;
+}
+
+
+/* TWEETS  ↓ */
+
+.post-box{
+    color: var(--shadow);
+}

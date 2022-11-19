@@ -8,8 +8,11 @@ import img1 from '../img/icon1.png'
 import img2 from '../img/icon2.png'
 import img3 from '../img/icon3.png'
 import github from '../img/github.svg'
+import logo from '../img/logo.png'
 
-const MAX_TWEET_CHAR = 250;
+import './styles.css'
+
+const MAX_POST_CHAR = 250;
 
 function TweetForm({ loggedInUser, onSuccess }) {
 	const formik = useFormik({
@@ -37,15 +40,15 @@ function TweetForm({ loggedInUser, onSuccess }) {
 	}
 
 	return (
-		<div className="border-b border-silver ">
-			<form className="pl-18 mt-6 flex flex-col" onSubmit={formik.handleSubmit}>
+		<div className="form-box">
+			<form className="form-post" onSubmit={formik.handleSubmit}>
 				<textarea
 					type="text"
 					name="text"
 					value={formik.values.text}
 					onChange={formik.handleChange}
 					onBlur={formik.handleBlur}
-					className="bg-transparent outline-none px-5"
+					className="textarea-post"
 					placeholder="Escreva sua mensagem"
 					required
 					disabled={formik.isSubmitting}
@@ -54,16 +57,16 @@ function TweetForm({ loggedInUser, onSuccess }) {
 				<div className="space-x-2 text-sm flex items-center px-2 py-2 justify-end">
 					<span>
 						<span>{formik.values.text.length}</span> /{" "}
-						<span className="text-birdBlue">{MAX_TWEET_CHAR}</span>
+						<span className="text-birdBlue">{MAX_POST_CHAR}</span>
 					</span>
 					<button
 						type="submit"
 						disabled={
-							formik.values.text.length > MAX_TWEET_CHAR || formik.isSubmitting
+							formik.values.text.length > MAX_POST_CHAR || formik.isSubmitting
 						}
-						className="bg-newPurple px-3 font-bold disabled:opacity-50 py-1 px-2 rounded-full"
+						className="btn-post"
 					>
-						Postar
+						Sussurrar
 					</button>
 				</div>
 			</form>
@@ -74,7 +77,7 @@ function Tweet({ name, username, children }) {
 	const randNumber = Math.floor(Math.random() * 3)
 	const avatares = [img0, img1, img2, img3]
 	return (
-		<div className="flex space-x-3 justify-between pt-4 pb-4 border-b border-silver">
+		<div className="post-box flex space-x-3 justify-between pt-4 pb-4 border-b border-silver">
 			<div>
 				<img className="w-10" src={avatares[randNumber]} />
 			</div>
@@ -124,17 +127,12 @@ export function Home({ loggedInUser }) {
 
 	return (
 		<>
-			<div className="flex flex-col items-center">
-			<div className="w-[600px] max-w-[90%] border-silver shadow-xl">
-				<div className="flex flex-row justify-between items-center w-full">
-					<h1 className="text-2xl text-platinum m-4 font-bold">{`Bem vindo(a), ${loggedInUser.name.split(' ')[0]}!`}</h1>
-					<button onClick={() => {localStorage.removeItem('user');location.reload()}} className="bg-red-800  text-sm fixed bottom-2 left-2 font-bold px-3 py-1 px-2 rounded-full">Sair</button>
+			<div className="homepage">
+			<div className="logo-box">
+				<div className="logo">
+					<img src={logo} />
 				</div>
 				<TweetForm loggedInUser={loggedInUser} onSuccess={getData} />
-				<div className="navBar flex flex-row mt-2 mb-4 pb-2 justify-around">
-					<span className="m-2 p-1 px-2 rounded-full border-2 border-gray-600" onClick={allPosts}>Todas as postagens</span>
-					<span className="m-2 p-1 px-2 rounded-full border-2 border-gray-600" onClick={myPosts}>Minhas postagens</span>
-				</div>
 				<div>
 					{
 						data.map((tweet) => (
@@ -149,7 +147,7 @@ export function Home({ loggedInUser }) {
 				</div>
 
 				</div>
-			<div className="m-2 flex flex-col w-[50%]">
+			{/* <div className="m-2 flex flex-col w-[50%]">
 					<div className="card w-40 flex flex-col relative justify-center items-center shadow-lg p-4 self-center border-0 rounded-md">
 						<span className="self-start cursor-pointer absolute top-0 left-2" onClick={minimizeHandler}>___</span>
 						<a className="flex flex-col items-center" href='https://www.github.com/luccasandrade' target='_blank'>
@@ -162,7 +160,7 @@ export function Home({ loggedInUser }) {
 							<span>Github</span>
 						</a>
 					</div>
-			</div>
+			</div> */}
 			</div>
 		</>
 	);

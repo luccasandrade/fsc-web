@@ -9,6 +9,7 @@ import img2 from '../img/icon2.png'
 import img3 from '../img/icon3.png'
 import github from '../img/github.svg'
 import logo from '../img/logo.png'
+import Menu from "../Menu";
 
 import './styles.css'
 
@@ -161,6 +162,7 @@ export function Home({ loggedInUser }) {
 						</a>
 					</div>
 			</div> */}
+			<Menu></Menu>
 			</div>
 		</>
 	);

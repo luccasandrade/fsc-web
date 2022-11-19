@@ -128,11 +128,12 @@ export function Home({ loggedInUser }) {
 	return (
 		<>
 			<div className="homepage">
-			<div className="logo-box">
-				<div className="logo">
-					<img src={logo} />
+				<div className="logo-box">
+					<div className="logo">
+						<img src={logo} />
+					</div>
+					<TweetForm loggedInUser={loggedInUser} onSuccess={getData} />
 				</div>
-				<TweetForm loggedInUser={loggedInUser} onSuccess={getData} />
 				<div>
 					{
 						data.map((tweet) => (
@@ -146,7 +147,6 @@ export function Home({ loggedInUser }) {
 						))}
 				</div>
 
-				</div>
 			{/* <div className="m-2 flex flex-col w-[50%]">
 					<div className="card w-40 flex flex-col relative justify-center items-center shadow-lg p-4 self-center border-0 rounded-md">
 						<span className="self-start cursor-pointer absolute top-0 left-2" onClick={minimizeHandler}>___</span>

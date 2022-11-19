@@ -1,9 +1,11 @@
 .homepage{
-    background-color: var(--background);
+    background-color: var(--detail);
 }
 .logo{
-    width: 50px;
+    width: 60px;
     margin: 2rem;
+    border-radius: 10px;
+    padding: 0.2rem;
 }
 
 .logo-box{
@@ -17,25 +19,44 @@
     border-radius: 50px;
     height: 80px;
     padding: 1rem 1.5rem;
+    width: 70%;
 }
 .form-post{
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .form-box{
-    border-bottom: 1px solid gray;
-    background-color: var(--detail);
     width: 100%;
-    padding: 2rem;
-
+    display: flex;
+    margin-bottom: 1rem;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .btn-post{
-    background-color: var(--background);
+    background-color: var(--background) !important;
     color: var(--shadow);
     padding: 0.2rem 0.5rem;
-    margin-top: 1rem;
+    margin: 1rem 0;
+    border-radius: 10px;
+}
+
+.bottom-text {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    margin-right: 1rem;
+}
+
+.char-limit-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.5rem;
+    color: white;
 }
 
 

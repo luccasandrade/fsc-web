@@ -54,10 +54,10 @@ function TweetForm({ loggedInUser, onSuccess }) {
 					disabled={formik.isSubmitting}
 				></textarea>
 
-				<div className="space-x-2 text-sm flex items-center px-2 py-2 justify-end">
-					<span>
-						<span>{formik.values.text.length}</span> /{" "}
-						<span className="text-birdBlue">{MAX_POST_CHAR}</span>
+				<div className="bottom-text">
+					<span className="char-limit-box" >
+							<span>{formik.values.text.length}</span> /{" "}
+							<span className="text-red-300">{MAX_POST_CHAR}</span>
 					</span>
 					<button
 						type="submit"
@@ -77,7 +77,7 @@ function Tweet({ name, username, children }) {
 	const randNumber = Math.floor(Math.random() * 3)
 	const avatares = [img0, img1, img2, img3]
 	return (
-		<div className="post-box flex space-x-3 justify-between pt-4 pb-4 border-b border-silver">
+		<div className="post-box flex space-x-3 items-center justify-between pt-4 pb-4 border-b border-silver">
 			<div>
 				<img className="w-10" src={avatares[randNumber]} />
 			</div>

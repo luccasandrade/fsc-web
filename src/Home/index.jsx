@@ -74,9 +74,10 @@ function TweetForm({ loggedInUser, onSuccess }) {
 		</div>
 	);
 }
-function Tweet({ name, username, children }) {
+function Tweet({ name, username, children, likes }) {
 	const randNumber = Math.floor(Math.random() * 3)
 	const avatares = [img0, img1, img2, img3]
+	console.log(likes)
 	return (
 		<div className="post-box flex space-x-3 items-center justify-between pt-4 pb-4 border-b border-silver">
 			<div>
@@ -125,6 +126,7 @@ export function Home({ loggedInUser }) {
 		const postsFiltrados = data.filter(post => post.user.id === myUser.id)
 		setData(postsFiltrados)
 	}
+	console.log(data[0])
 
 	return (
 		<>
@@ -142,6 +144,7 @@ export function Home({ loggedInUser }) {
 								key={tweet.id}
 								name={tweet.user.name}
 								username={tweet.user.username}
+								likes={tweet.likes}
 							>
 								{tweet.text}
 							</Tweet>

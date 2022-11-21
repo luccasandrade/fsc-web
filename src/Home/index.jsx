@@ -1,4 +1,4 @@
-import { HeartIcon } from "@heroicons/react/outline";
+import { HeartIcon, UsersIcon } from "@heroicons/react/outline";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
@@ -74,10 +74,16 @@ function TweetForm({ loggedInUser, onSuccess }) {
 		</div>
 	);
 }
-function Tweet({ name, username, children, loggedInUser, id, allLikes }) {
+function Tweet({ name, username, children, loggedInUser, id, allLikes, getLikes }) {
 	const randNumber = Math.floor(Math.random() * 3)
 	const avatares = [img0, img1, img2, img3]
-	const numLikes = allLikes.filter((like) => like.tweetId === id)
+	const actualTweetLikes = allLikes.filter((like) => like.tweetId === id)
+	const numLikes = actualTweetLikes.length
+	let redHeart = false
+	actualTweetLikes.map((tweet) => {
+		if (tweet.userId === loggedInUser.id)
+		redHeart = true
+	})
 
 	const handleLike = async (e) => {
 		let UID = localStorage.getItem('user')
@@ -89,6 +95,7 @@ function Tweet({ name, username, children, loggedInUser, id, allLikes }) {
 					"authorization": `Bearer ${loggedInUser.accessToken}`,
 				},
 			});
+			getLikes()
 		}
 	}
 
@@ -105,8 +112,8 @@ function Tweet({ name, username, children, loggedInUser, id, allLikes }) {
 				<span className="text-silver">@{username}</span>
 				<p>{children}</p>
 				<div className="flex space-x-1 items-center text-silver">
-					<HeartIcon id={id} className="w-6 stroke-1" onClick={handleLike}></HeartIcon>
-					<span>{numLikes?numLikes.length:0}</span>
+					<HeartIcon id={id} className={redHeart?"w-6 stroke-1 fill-red-500":"w-6 stroke-1"}onClick={handleLike}></HeartIcon>
+					<span>{numLikes?numLikes:0}</span>
 				</div>
 			</div>
 		</div>
@@ -175,6 +182,7 @@ export function Home({ loggedInUser }) {
 								loggedInUser = {loggedInUser}	
 								id = {tweet.id}
 								allLikes = {allLikes}
+								getLikes = {getLikes}
 >								
 								{tweet.text}
 							</Tweet>

@@ -74,10 +74,26 @@ function TweetForm({ loggedInUser, onSuccess }) {
 		</div>
 	);
 }
-function Tweet({ name, username, children, likes }) {
+function Tweet({ name, username, children, loggedInUser, id, allLikes }) {
 	const randNumber = Math.floor(Math.random() * 3)
 	const avatares = [img0, img1, img2, img3]
-	console.log(likes)
+	const numLikes = allLikes.filter((like) => like.tweetId === id)
+
+	const handleLike = async (e) => {
+		let UID = localStorage.getItem('user')
+		if (UID) {
+			const 	data = {userId: JSON.parse(UID).id,
+			tweetId: e.target.id}
+			const res = await axios.post(`${import.meta.env.VITE_API_HOST}/likes`, data, {
+				headers: {
+					"authorization": `Bearer ${loggedInUser.accessToken}`,
+				},
+			});
+		}
+	}
+
+
+
 	return (
 		<div className="post-box flex space-x-3 items-center justify-between pt-4 pb-4 border-b border-silver">
 			<div>
@@ -89,8 +105,8 @@ function Tweet({ name, username, children, likes }) {
 				<span className="text-silver">@{username}</span>
 				<p>{children}</p>
 				<div className="flex space-x-1 items-center text-silver">
-					<HeartIcon className="w-6 stroke-1"></HeartIcon>
-					<span>{Math.floor(Math.random() * 20)}</span>
+					<HeartIcon id={id} className="w-6 stroke-1" onClick={handleLike}></HeartIcon>
+					<span>{numLikes?numLikes.length:0}</span>
 				</div>
 			</div>
 		</div>
@@ -99,6 +115,8 @@ function Tweet({ name, username, children, likes }) {
 
 export function Home({ loggedInUser }) {
 	const [data, setData] = useState([]);
+	const [allLikes, setAllLikes] = useState([])
+
 	async function getData() {
 		const res = await axios.get(`${import.meta.env.VITE_API_HOST}/tweets`, {
 			headers: {
@@ -108,26 +126,36 @@ export function Home({ loggedInUser }) {
 		setData(res.data.reverse());
 	}
 
+	async function getLikes () {
+	try{
+		axios.get(`${import.meta.env.VITE_API_HOST}/likes`).then(resp => {
+			setAllLikes(resp.data)
+		})
+
+	}catch(error){
+		console.log('erro: ' + error)
+	}
+	}
+
 	useEffect(() => {
 		getData();
+		getLikes();
 	}, []);
 
-	const minimizeHandler = () => {
-		const card = document.querySelector('.card')
-		card.classList.contains('minimize')? card.classList.remove('minimize'): card.classList.add('minimize')
-	}
+	// const minimizeHandler = () => {
+	// 	const card = document.querySelector('.card')
+	// 	card.classList.contains('minimize')? card.classList.remove('minimize'): card.classList.add('minimize')
+	// }
 
-	const allPosts = () => {
-		getData()
-	}
-	const myPosts = () => {
-		let myUser = localStorage.getItem('user')
-		myUser = myUser? JSON.parse(myUser): null
-		const postsFiltrados = data.filter(post => post.user.id === myUser.id)
-		setData(postsFiltrados)
-	}
-	console.log(data[0])
-
+	// const allPosts = () => {
+	// 	getData()
+	// }
+	// const myPosts = () => {
+	// 	let myUser = localStorage.getItem('user')
+	// 	myUser = myUser? JSON.parse(myUser): null
+	// 	const postsFiltrados = data.filter(post => post.user.id === myUser.id)
+	// 	setData(postsFiltrados)
+	// }
 	return (
 		<>
 			<div className="homepage">
@@ -144,8 +172,10 @@ export function Home({ loggedInUser }) {
 								key={tweet.id}
 								name={tweet.user.name}
 								username={tweet.user.username}
-								likes={tweet.likes}
-							>
+								loggedInUser = {loggedInUser}	
+								id = {tweet.id}
+								allLikes = {allLikes}
+>								
 								{tweet.text}
 							</Tweet>
 						))}

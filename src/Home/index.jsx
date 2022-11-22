@@ -88,8 +88,9 @@ function Tweet({ name, username, children, loggedInUser, id, allLikes, getLikes 
 	const handleLike = async (e) => {
 		let UID = localStorage.getItem('user')
 		if (UID) {
-			const 	data = {userId: JSON.parse(UID).id,
-			tweetId: e.target.id}
+			const data = {
+				userId: JSON.parse(UID).id,
+				tweetId: e.target.id}
 			const res = await axios.post(`${import.meta.env.VITE_API_HOST}/likes`, data, {
 				headers: {
 					"authorization": `Bearer ${loggedInUser.accessToken}`,
@@ -112,7 +113,7 @@ function Tweet({ name, username, children, loggedInUser, id, allLikes, getLikes 
 				<span className="text-silver">@{username}</span>
 				<p>{children}</p>
 				<div className="flex space-x-1 items-center text-silver">
-					<HeartIcon id={id} className={redHeart?"w-6 stroke-1 fill-red-500":"w-6 stroke-1"}onClick={handleLike}></HeartIcon>
+				<span  id={id} className={redHeart?"material-symbols-outlined redcolor":"material-symbols-outlined"} onClick={handleLike}>favorite</span>
 					<span>{numLikes?numLikes:0}</span>
 				</div>
 			</div>

@@ -64,3 +64,12 @@
 .post-box{
     color: var(--shadow);
 }
+
+.material-symbols-outlined{
+    color: rgb(194, 194, 194);
+    cursor: pointer;
+}
+
+.redcolor{
+    color: red;
+}

@@ -72,9 +72,9 @@ export function Login({ signInUser }) {
 					{formik.isSubmitting ? "Enviando..." : "Entrar"}
 				</button>
 			</form>
-			<span className="text-sm text-platinum opacity-70">
+			<span className="text-sm text-newPurple opacity-70">
 				Não tem uma conta?{" "}
-				<a className="text-newPurple" href="/signup">
+				<a className="text-newPurple font-bold" href="/signup">
 					Inscreva-se
 				</a>
 			</span>
